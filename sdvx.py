@@ -19,11 +19,19 @@ class LevelSet:
                 return lev
         return Level(-1)
 
-    def getRandomSongFromLevel(self, levelTarget):
+    def getRandomSongFromLevel(self, levelTarget, number = 1):
         lev = self.getLevel(levelTarget)
+        songs = lev.songs
         if lev.level == -1:
-            return 'ERROR'
-        return random.choice(lev.songs)
+            return ['ERROR']
+        
+        returnsongs = []
+        for i in range(number):
+            song = random.choice(songs)
+            returnsongs.append(song)
+            songs.remove(song)
+
+        return returnsongs
 
 
 levels = []
@@ -47,7 +55,7 @@ with open('sdvx.txt', encoding= 'utf8') as openfileobject:
         elif songName == 1:
             levels[index].songs.append(line)
             songName = 0
-            
+
 def main():
     sdvx = LevelSet(levels)
 
@@ -55,8 +63,7 @@ def main():
         
     if args >= 2:
         print(int(sys.argv[1]))
-        for i in range(int(sys.argv[2])):
-            print(sdvx.getRandomSongFromLevel(int(sys.argv[1])))
+        print(sdvx.getRandomSongFromLevel(int(sys.argv[1]), int(sys.argv[2])))
 
 if __name__ == "__main__":
     main()

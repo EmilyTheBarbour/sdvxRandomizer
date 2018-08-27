@@ -42,11 +42,17 @@ class LevelSet:
         
         return random.choice(songlist)
 
-    def getRandomSongAtRatingFromLevel(self, levelTarget, rating):
+    def getRandomSongAtRatingFromLevel(self, levelTarget, rating, number = 1):
         songs = self.getSongsAtRatingFromLevel(levelTarget, rating)
+        returnsongs = []
         if songs == []:
-            return 'ERROR'
-        return random.choice(songs)
+                return ['ERROR']
+        for i in range(number):
+            song = random.choice(songs)
+            returnsongs.append(song)
+            songs.remove(song)
+        
+        return returnsongs
         
 levels = []
 ratingsSize = [7, 8, 8, 8, 5]
@@ -81,14 +87,6 @@ for shnum in range(1, 6):
 
         levels[shnum - 1 - add].songs.append(songs)
 
-def getSongsWithRating(levelSet, levelTarget, rating, num):
-    for i in range(num):
-        print(levelSet.getRandomSongAtRatingFromLevel(levelTarget, rating))
-
-def getSongs(levelSet, levelTarget, num):
-    for i in range(num):
-        print(levelSet.getRandomSongFromLevel(levelTarget))
-
 def main():
         sdvx = LevelSet(levels)
         
@@ -97,10 +95,9 @@ def main():
         if args >= 3:
             if sys.argv[1] == 'RandomSongFromRatingAtLevel':
                 if args >= 4:
-                    for i in range(int(sys.argv[4])):
-                        print(sdvx.getRandomSongAtRatingFromLevel(int(sys.argv[2]), sys.argv[3]))     
+                    print(sdvx.getRandomSongAtRatingFromLevel(int(sys.argv[2]), sys.argv[3], int(sys.argv[4])))
                 else:
-                    print(sdvx.getRandomSongAtRatingFromLevel(int(sys.argv[2]), sys.argv[3]))                 
+                    print(sdvx.getRandomSongAtRatingFromLevel(int(sys.argv[2]), sys.argv[3], 1))            
 
 if __name__ == "__main__":
     main()

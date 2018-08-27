@@ -47,16 +47,16 @@ with open('sdvx.txt', encoding= 'utf8') as openfileobject:
         elif songName == 1:
             levels[index].songs.append(line)
             songName = 0
-
-
+            
 def main():
     sdvx = LevelSet(levels)
 
     args = len(sys.argv[1:])
         
     if args >= 2:
-         for i in range(sys.argv[3]):
-             print(sdvx.getRandomSongFromLevel(sys.argv[2]))
+        print(int(sys.argv[1]))
+        for i in range(int(sys.argv[2])):
+            print(sdvx.getRandomSongFromLevel(int(sys.argv[1])))
 
 if __name__ == "__main__":
     main()

@@ -92,18 +92,15 @@ def getSongs(levelSet, levelTarget, num):
 def main():
         sdvx = LevelSet(levels)
         
-        #args = len(sys.argv[1:])
+        args = len(sys.argv[1:])
         
-        # if args >= 3:
-        #     if sys.argv[1] == 'RandomSongFromRatingAtLevel':
-        #         if args >= 4:
-        #             for i in range(int(sys.argv[4])):
-        #                 print(sdvx.getRandomSongAtRatingFromLevel(int(sys.argv[2]), sys.argv[3]))     
-        #         else:
-        #             print(sdvx.getRandomSongAtRatingFromLevel(int(sys.argv[2]), sys.argv[3]))                 
-
-        #getSongsWithRating(sdvx, 18, 'A+', 5)
-        getSongs(sdvx, 15, 5)
+        if args >= 3:
+            if sys.argv[1] == 'RandomSongFromRatingAtLevel':
+                if args >= 4:
+                    for i in range(int(sys.argv[4])):
+                        print(sdvx.getRandomSongAtRatingFromLevel(int(sys.argv[2]), sys.argv[3]))     
+                else:
+                    print(sdvx.getRandomSongAtRatingFromLevel(int(sys.argv[2]), sys.argv[3]))                 
 
 if __name__ == "__main__":
     main()

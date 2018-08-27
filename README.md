@@ -1,6 +1,6 @@
 # sdvxRandomizer
 
-#sdvx.py
+# sdvx.py
 
 has 2 arguments: level number
 level: the level pool to pick songs from
@@ -15,7 +15,7 @@ would return the following information:
 НУМЛ
 New Game feat.Mayumi Morinaga
 
-#sdvxRating.py
+# sdvxRating.py
 
 similar to sdvx.py, except it is built off of the community rating system for levels 15-18
 
